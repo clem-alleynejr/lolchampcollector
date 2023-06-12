@@ -87,7 +87,7 @@ DATABASES = {
     'ENGINE': 'django.db.backends.postgresql',
     'NAME': 'lolchampcollector',
     'USER': os.environ['DB_USER'],
-    'PASSWORD': os.environ['DB_PW'],
+    'PASSWORD': os.environ['DB_PASSWORD'],
     'HOST': os.environ['DB_HOST'],
     'PORT': '5432',
   }
