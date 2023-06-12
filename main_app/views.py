@@ -13,3 +13,7 @@ def lolchamps_index(request):
 
 def about(request):
     return render(request, 'about.html')
+
+def lolchamp_details(request, lolchamp_id):
+    lolchamp = LolChamp.objects.get(id=lolchamp_id)
+    return render(request, 'lolchamps/details.html', {'lolchamp': lolchamp})
