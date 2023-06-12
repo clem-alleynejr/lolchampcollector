@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% for lolchamp in lolchamps %}
+  <div class="card">
+    <div class="card-content">
+      <span class="card-title">{{ lolchamp.name }}</span>
+      <p>Role: {{ lolchamp.role }}</p>
+      <p>Difficulty: {{ cat.difficulty }}</p>
+    </div>
+  </div>
+{% endfor %}
+
+{% endblock %}
