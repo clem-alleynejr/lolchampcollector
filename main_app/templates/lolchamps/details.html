@@ -8,6 +8,10 @@
             <p>Role: {{ lolchamp.role }}</p>
             <p>Difficulty: {{ lolchamp.difficulty }}</p>
         </div>
+        <div class="card-action">
+            <a href="{% url 'lolchamps_update' lolchamp.id %}">Edit</a>
+            <a href="{% url 'lolchamps_delete' lolchamp.id %}">Delete</a>
+          </div>        
     </div>
 
 
