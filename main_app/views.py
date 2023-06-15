@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import LolChamp
+from django.views.generic import ListView, DetailView
+from .models import LolChamp, Item
 from .forms import AbilityForm
 
 def home(request):
@@ -43,3 +44,21 @@ def add_ability(request, lolchamp_id):
         new_ability.lolchamp_id = lolchamp_id
         new_ability.save()
     return redirect('details', lolchamp_id=lolchamp_id)
+
+class ItemList(ListView):
+  model = Item
+
+class ItemDetail(DetailView):
+  model = Item
+
+class ItemCreate(CreateView):
+  model = Item
+  fields = '__all__'
+
+class ItemUpdate(UpdateView):
+  model = Item
+  fields = ['name', 'color']
+
+class ItemDelete(DeleteView):
+  model = Item
+  success_url = '/items'

@@ -9,5 +9,10 @@ urlpatterns = [
     path('lolchamps/create/', views.LolChampCreate.as_view(), name='lolchamps_create'),
     path('lolchamps/<int:pk>/update/', views.LolChampUpdate.as_view(), name='lolchamps_update'),
     path('lolchamps/<int:pk>/delete/', views.LolChampDelete.as_view(), name='lolchamps_delete'),
-    path('lolchamps/<int:lolchamp_id>/add_ability/', views.add_ability, name='add_ability')
+    path('lolchamps/<int:lolchamp_id>/add_ability/', views.add_ability, name='add_ability'),
+    path('items/', views.ItemList.as_view(), name='items_index'),
+    path('items/<int:pk>/', views.ItemDetail.as_view(), name='items_detail'),
+    path('items/create/', views.ItemCreate.as_view(), name='items_create'),
+    path('items/<int:pk>/update/', views.ItemUpdate.as_view(), name='items_update'),
+    path('items/<int:pk>/delete/', views.ItemDelete.as_view(), name='items_delete'),
 ]
