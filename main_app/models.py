@@ -3,8 +3,8 @@ from django.urls import reverse
 
 class Item(models.Model):
     name = models.CharField(max_length=50)
-    description = models.CharField(max_length=20)
-    cost = models.IntegerField()
+    description = models.CharField(max_length=200)
+    cost = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name
@@ -16,6 +16,7 @@ class LolChamp(models.Model):
     name = models.CharField(max_length=100)
     role = models.CharField(max_length=100)
     difficulty = models.CharField(max_length=100)
+    items = models.ManyToManyField(Item)
 
     def __str__(self):
         return self.name

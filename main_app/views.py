@@ -18,15 +18,22 @@ def about(request):
 
 def lolchamp_details(request, lolchamp_id):
     lolchamp = LolChamp.objects.get(id=lolchamp_id)
+    id_list = lolchamp.items.all().values_list('id')
+    items_lolchamp_doesnt_have = Item.objects.exclude(id__in=id_list)
     ability_form = AbilityForm()
     return render(request, 'lolchamps/details.html', {
         'lolchamp': lolchamp,
-        'ability_form': ability_form
+        'ability_form': ability_form,
+        'items': items_lolchamp_doesnt_have
         })
+
+def assoc_item(request, lolchamp_id, item_id):
+   LolChamp.objects.get(id=lolchamp_id).items.add(item_id)
+   return redirect ('details', lolchamp_id=lolchamp_id)
 
 class LolChampCreate(CreateView):
     model = LolChamp
-    fields = '__all__'
+    fields = ['name', 'role', 'difficulty']
     success_url = '/lolchamps/{id}'
 
 class LolChampUpdate(UpdateView):
@@ -57,7 +64,7 @@ class ItemCreate(CreateView):
 
 class ItemUpdate(UpdateView):
   model = Item
-  fields = ['name', 'color']
+  fields = ['name', 'description', 'cost']
 
 class ItemDelete(DeleteView):
   model = Item
